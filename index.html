@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>Bactéries</li>
+        <li>Algues</li>
+        <li>Champignons et lichens</li>
+        <li>Plantes<ul>
+                <li>Spermatophyta<ul>
+                        <li>Gymnospermes</li>
+                        <li>Angiospermes<ul>
+                                <li>Monocotylédones</li>
+                                <li>Dicotylédones</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>Bryophyta</li>
+                <li>Pteridophyta</li>
+            </ul>
+        </li>
+        <li>Animaux</li>
+        <li>Autres ou inclassables</li>
+    </ul>
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script>
+        $(function () {
+            $('li:has(ul)') // tete de sous-liste
+                .css('font-weight', 'bold')
+                .css('cursor', 'pointer')
+                .click(function (event) {
+                    if (this == event.target) {
+                        $(this).children().toggle();
+                    }
+                    // annulation de la propagation
+                    return false;
+                })
+                .click(); // masquage initial
+            $('li:not( :has(ul) )') // element sans sous-liste
+                .css('font-weight', 'normal')
+                .css('cursor', 'default');
+        });
+    </script>
+</body>
+
+</html>
